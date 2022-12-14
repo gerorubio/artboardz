@@ -17,13 +17,9 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { ListItemButton, ListItem, Link, Avatar, Menu, Tooltip, MenuItem, ListItemIcon } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button/Button';
-import { MenuProps } from '@mui/material/Menu';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import StyleIcon from '@mui/icons-material/Style';
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { color } from '@mui/system';
+import { ThemeProvider } from "@mui/material/styles";
 
 const drawerWidth = 240;
 const settings = ['Profile', 'Logout'];
@@ -126,7 +122,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-                
               </Typography>
               <Box sx={{ flexGrow: 0 }}>
                   <Menu
@@ -198,7 +193,8 @@ export default function App({ Component, pageProps }: AppProps) {
             open={open}
           >
             <DrawerHeader>
-              <IconButton onClick={handleDrawerClose}>
+              <Typography variant='h5' align='left'>Admin Panel</Typography>
+              <IconButton sx={{ display: { md: 'none' } }} onClick={handleDrawerClose}>
                 {theme.direction === 'ltr' ? <ChevronLeftIcon sx={{ color: 'white' }}/> : <ChevronRightIcon sx={{ color: 'white' }}/>}
               </IconButton>
             </DrawerHeader>

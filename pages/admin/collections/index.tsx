@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import CollectionForm from "../../../src/components/collections/CollectionForm";
 import CloseIcon from '@mui/icons-material/Close';
+import EditCollecionForm from "../../../src/components/collections/EditCollectionForm";
 
 export default function Collections() {
   
@@ -38,10 +39,15 @@ export default function Collections() {
     }
   ];
 
-  // Modal
+  // New Collection
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // Edit Collection
+  const [openEdit, setOpenEdit]= useState(false);
+  const handleOpenEdit = () => setOpenEdit(true);
+  const handleCloseEdit = () => setOpenEdit(false);
 
   return (
     <>
@@ -62,7 +68,7 @@ export default function Collections() {
               }
             }}
           >
-            <DialogTitle>Subscribe</DialogTitle>
+            <DialogTitle>New Collection</DialogTitle>
             <DialogContent>
               <CollectionForm />
             </DialogContent>
@@ -107,7 +113,26 @@ export default function Collections() {
                   <StyledTableCell>{ row.title }</StyledTableCell>
                   <StyledTableCell>{ row.location }</StyledTableCell>
                   <StyledTableCell>{ row.supply }</StyledTableCell>
-                  <StyledTableCell><MoreHorizIcon /></StyledTableCell>
+                  <StyledTableCell>
+                    <IconButton onClick={handleOpenEdit}>
+                      <MoreHorizIcon />
+                    </IconButton>
+                    <Dialog
+                      open={openEdit}
+                      onClose={handleCloseEdit}
+                      PaperProps={{
+                        style: {
+                          backgroundColor: '#1A1D27',
+                          color: '#FEFEFE'
+                        }
+                      }}
+                    >
+                      <DialogTitle>Edit Collection</DialogTitle>
+                      <DialogContent>
+                        <EditCollecionForm />
+                      </DialogContent>
+                    </Dialog>
+                  </StyledTableCell>
                 </TableRow>
               ))
             }
